@@ -1,4 +1,5 @@
 from decentralizepy.graphs.Regular import Regular
+from decentralizepy.graphs.EquiTopo import DEquiStatic
 from decentralizepy.graphs.FullyConnected import FullyConnected
 from decentralizepy.graphs.Ring import Ring
 from decentralizepy.graphs.SmallWorld import SmallWorld
@@ -53,7 +54,7 @@ if __name__ == "__main__":
         k_over_2 = None
         beta = None
         file_name = None
-        type_adjacency = "adjacency"
+        type_adjacency = "edges"
 
         for currentArgument, currentValue in arguments:
             if currentArgument in ("-h", "--help"):
@@ -86,9 +87,10 @@ if __name__ == "__main__":
             g = SmallWorld(num_nodes, k_over_2, beta)
         elif graph_type == 'Star':
             g = Star(num_nodes)
+        elif graph_type == 'DEquiStatic':
+            g = DEquiStatic(num_nodes, seed=seed, M=6)
         else:
             raise ValueError("Invalid graph type: " + graph_type)
-        
 
         if file_name is not None:
             g.write_graph_to_file(file_name, type=type_adjacency)
