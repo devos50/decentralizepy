@@ -1,5 +1,5 @@
 from decentralizepy.graphs.Regular import Regular
-from decentralizepy.graphs.EquiTopo import DEquiStatic
+from decentralizepy.graphs.EquiTopo import DEquiStatic, UEquiStatic
 from decentralizepy.graphs.FullyConnected import FullyConnected
 from decentralizepy.graphs.Ring import Ring
 from decentralizepy.graphs.SmallWorld import SmallWorld
@@ -89,6 +89,8 @@ if __name__ == "__main__":
             g = Star(num_nodes)
         elif graph_type == 'DEquiStatic':
             g = DEquiStatic(num_nodes, seed=seed, M=6)
+        elif graph_type == 'UEquiStatic':
+            g = UEquiStatic(num_nodes, seed=seed, M=3)
         else:
             raise ValueError("Invalid graph type: " + graph_type)
 
